@@ -13,11 +13,10 @@ import time
 NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
 IP_VRCHAT = "127.0.0.1"         # ID LOCALHOST
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
-ATRASO_ATUALIZACAO = 0.18        # Intervalo para não dar spam (em segundos)
+ATRASO_ATUALIZACAO = 0.22        # Intervalo para não dar spam (em segundos)
 PONTO_DIVISAO_MIDI = 62         # Mi Central (E4) - Divide Mão Esq e Mão Dir
 
 # NOTAS MÚSICAIS
-
 # Motor harmónico de intervalos (em semitons) Master / Jazz
 TIPOS_ACORDE = {
     # --- TRÍADES ---
