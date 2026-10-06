@@ -102,7 +102,7 @@ def iniciar():
     portas_disponiveis = mido.get_input_names()
     
     porta_alvo = next((p for p in portas_disponiveis if NOME_PORTA_MIDI.lower() in p.lower()), None)
-
+# Avisos de erros
     if not porta_alvo:
         print(f"❌ Erro: Porta '{NOME_PORTA_MIDI}' não encontrada.")
         print(f"Portas ativas no momento: {portas_disponiveis}")
