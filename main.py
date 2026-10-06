@@ -3,7 +3,7 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" 
 
 import mido
-# A LINHA MÁGICA: Avisa o mido para usar o pygame em vez do rtmidi
+# Avisa o mido para usar o pygame em vez do rtmidi
 mido.set_backend('mido.backends.pygame')
 
 from pythonosc import udp_client
