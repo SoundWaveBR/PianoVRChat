@@ -44,7 +44,7 @@ Como o Windows não permite que dois programas leiam o mesmo dispositivo MIDI em
 ---
 
 ## 🎮 Como Usar
-Com o loopMIDI a rodando de fundo e o VRChat aberto, abra o terminal na pasta do projeto (## certifique-se de que o `(venv)` está ativado) e execute o comando:
+Com o loopMIDI a rodando de fundo e o VRChat aberto, abra o terminal na pasta do projeto (**certifique-se de que o `(venv)` está ativado**) e execute o comando:
 
 `python main.py`
 
