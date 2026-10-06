@@ -13,46 +13,67 @@ import time
 NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
 IP_VRCHAT = "127.0.0.1"         # ID LOCALHOST
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
-ATRASO_ATUALIZACAO = 0.3        # Intervalo para não dar spam (em segundos)
+ATRASO_ATUALIZACAO = 0.18        # Intervalo para não dar spam (em segundos)
 PONTO_DIVISAO_MIDI = 62         # Mi Central (E4) - Divide Mão Esq e Mão Dir
 
-# --- DICIONÁRIOS MUSICAIS ---
-NOTAS_PT = ['Dó', 'Dó#', 'Ré', 'Ré#', 'Mi', 'Fá', 'Fá#', 'Sol', 'Sol#', 'Lá', 'Lá#', 'Si']
+# NOTAS MÚSICAIS
 
-# Motor harmónico de intervalos (em semitons) expandido
+# Motor harmónico de intervalos (em semitons) Master / Jazz
 TIPOS_ACORDE = {
-    # Tríades Básicas
+    # --- TRÍADES ---
     (0, 4, 7): "Maior",
     (0, 3, 7): "Menor",
     (0, 3, 6): "Dim",       
     (0, 4, 8): "Aum",       
     
-    # Acordes Suspensos
+    # --- ACORDES SUSPENSOS ---
     (0, 5, 7): "sus4",
     (0, 2, 7): "sus2",
     
-    # Com Sétima
-    (0, 4, 7, 10): "7",     
-    (0, 4, 7, 11): "7M",    
-    (0, 3, 7, 10): "m7",    
-    (0, 3, 6, 10): "m7b5",  # Meio-diminuto
-    (0, 3, 6, 9): "dim7",   # Diminuto completo
-    (0, 3, 7, 11): "m(7M)", # Menor com 7ª Maior
+    # --- TÉTRADES (Sétimas) ---
+    (0, 4, 7, 10): "7",             # Dominante
+    (0, 4, 7, 11): "7M",            # Maior com 7ª Maior
+    (0, 3, 7, 10): "m7",            # Menor com 7ª
+    (0, 3, 7, 11): "m(7M)",         # Menor com 7ª Maior
+    (0, 3, 6, 10): "m7b5",          # Meio-diminuto
+    (0, 3, 6, 9): "dim7",           # Diminuto completo
+    (0, 4, 8, 10): "7#5",           # Aumentado com 7ª
+    (0, 4, 6, 10): "7b5",           # Dominante com 5ª diminuta
+    (0, 5, 7, 10): "7sus4",         # Sétima com 4ª suspensa
 
-    # Com Sexta
-    (0, 4, 7, 9): "6",
-    (0, 3, 7, 9): "m6",
+    # --- SEXTAS ---
+    (0, 4, 7, 9): "6",              # Maior com 6ª
+    (0, 3, 7, 9): "m6",             # Menor com 6ª
 
-    # Com Nona / Adicionadas (9ª é calculada como 2)
-    (0, 2, 4, 7): "add9",
-    (0, 2, 3, 7): "m(add9)",
-    (0, 2, 4, 7, 10): "9",
-    (0, 2, 3, 7, 10): "m9",
-    (0, 2, 4, 7, 11): "7M(9)",
+    # --- NONAS (Intervalo 2) ---
+    (0, 2, 4, 7): "add9",           # Adicionada de 9ª
+    (0, 2, 3, 7): "m(add9)",        # Menor adicionada de 9ª
+    (0, 2, 4, 7, 10): "9",          # Dominante com 9ª
+    (0, 2, 3, 7, 10): "m9",         # Menor com 9ª
+    (0, 2, 4, 7, 11): "7M(9)",      # Maior com 7ªM e 9ª
+    (0, 2, 4, 9): "6/9",            # 6/9 sem a quinta
+    (0, 2, 4, 7, 9): "6/9",         # 6/9 com a quinta
+    (0, 2, 3, 7, 9): "m6/9",        # Menor 6/9
     
-    # Sétima com quarta suspensa
-    (0, 5, 7, 10): "7sus4",
+    # --- NONAS ALTERADAS ---
+    (0, 1, 4, 7, 10): "7(b9)",      # Dominante com 9ª bemol
+    (0, 3, 4, 7, 10): "7(#9)",      # Dominante com 9ª sustenida (acorde Hendrix)
+
+    # --- DÉCIMAS PRIMEIRAS (Intervalo 5) ---
+    (0, 2, 4, 5, 7, 10): "11",      # Dominante com 11ª e 9ª
+    (0, 2, 3, 5, 7, 10): "m11",     # Menor com 11ª
+    (0, 4, 5, 7, 10): "7(11)",      # Sétima e 11ª (sem a 9ª)
+    (0, 3, 5, 7, 10): "m7(11)",     # Menor 7ª e 11ª
+    (0, 4, 6, 7, 10): "7(#11)",     # Lídio dominante (11ª aumentada)
+
+    # --- DÉCIMAS TERCEIRAS (Intervalo 9) ---
+    (0, 4, 7, 9, 10): "13",         # Dominante com 13ª (sem a 9ª)
+    (0, 2, 4, 7, 9, 10): "13",      # Dominante com 13ª completa
+    (0, 3, 7, 9, 10): "m13",        # Menor com 13ª
+    (0, 2, 3, 7, 9, 10): "m13",     # Menor com 13ª completa
+    (0, 4, 7, 8, 10): "7(b13)",     # Dominante com 13ª menor
 }
+
 
 def numero_para_nota(numero_midi):
     oitava = (numero_midi // 12) - 1
