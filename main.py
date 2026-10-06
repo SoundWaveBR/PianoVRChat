@@ -11,7 +11,7 @@ import time
 
 # --- CONFIGURAÇÕES PRINCIPAIS ---
 NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
-IP_VRCHAT = "127.0.0.1"         # Seu próprio PC
+IP_VRCHAT = "127.0.0.1"         # ID LOCALHOST
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
 ATRASO_ATUALIZACAO = 0.3        # Intervalo para não dar spam (em segundos)
 PONTO_DIVISAO_MIDI = 62         # Mi Central (E4) - Divide Mão Esq e Mão Dir
@@ -43,7 +43,7 @@ TIPOS_ACORDE = {
     (0, 4, 7, 9): "6",
     (0, 3, 7, 9): "m6",
 
-    # Com Nona / Adicionadas (como ignoramos as oitavas, a 9ª é calculada como 2)
+    # Com Nona / Adicionadas (9ª é calculada como 2)
     (0, 2, 4, 7): "add9",
     (0, 2, 3, 7): "m(add9)",
     (0, 2, 4, 7, 10): "9",
