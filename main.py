@@ -14,7 +14,7 @@ NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
 IP_VRCHAT = "127.0.0.1"         # Seu próprio PC
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
 ATRASO_ATUALIZACAO = 0.3        # Intervalo para não dar spam (em segundos)
-PONTO_DIVISAO_MIDI = 60         # Dó Central (C4) - Divide Mão Esq e Mão Dir
+PONTO_DIVISAO_MIDI = 62         # Mi Central (E4) - Divide Mão Esq e Mão Dir
 
 # --- DICIONÁRIOS MUSICAIS ---
 NOTAS_PT = ['Dó', 'Dó#', 'Ré', 'Ré#', 'Mi', 'Fá', 'Fá#', 'Sol', 'Sol#', 'Lá', 'Lá#', 'Si']
