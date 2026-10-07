@@ -13,10 +13,12 @@ import time
 NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
 IP_VRCHAT = "127.0.0.1"         # ID LOCALHOST
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
-ATRASO_ATUALIZACAO = 0.22        # Intervalo para não dar spam (em segundos)
+ATRASO_ATUALIZACAO = 0.22       # Intervalo para não dar spam (em segundos)
 PONTO_DIVISAO_MIDI = 62         # Mi Central (E4) - Divide Mão Esq e Mão Dir
 
-# NOTAS MÚSICAIS
+# --- DICIONÁRIOS MUSICAIS ---
+NOTAS_PT = ['Dó', 'Dó#', 'Ré', 'Ré#', 'Mi', 'Fá', 'Fá#', 'Sol', 'Sol#', 'Lá', 'Lá#', 'Si']
+
 # Motor harmónico de intervalos (em semitons) Master / Jazz
 TIPOS_ACORDE = {
     # --- TRÍADES ---
@@ -102,7 +104,8 @@ def iniciar():
     portas_disponiveis = mido.get_input_names()
     
     porta_alvo = next((p for p in portas_disponiveis if NOME_PORTA_MIDI.lower() in p.lower()), None)
-# Avisos de erros
+    
+    # Avisos de erros
     if not porta_alvo:
         print(f"❌ Erro: Porta '{NOME_PORTA_MIDI}' não encontrada.")
         print(f"Portas ativas no momento: {portas_disponiveis}")
