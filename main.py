@@ -1,15 +1,12 @@
 import os
-# Esconde aquela mensagem chata de boas vindas que o pygame solta no terminal
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide" 
 
 import mido
-# Avisa o mido para usar o pygame em vez do rtmidi
 mido.set_backend('mido.backends.pygame')
 
 from pythonosc import udp_client
 import time
 
-# --- CONFIGURAÇÕES PRINCIPAIS ---
 NOME_PORTA_MIDI = "Piano Chat"  # Nome exato da porta no loopMIDI
 IP_VRCHAT = "127.0.0.1"         # ID LOCALHOST
 PORTA_OSC_VRCHAT = 9000         # Porta padrão do VRChat
