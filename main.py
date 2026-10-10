@@ -120,7 +120,7 @@ def iniciar():
     notas_esq = set()
     notas_dir = set()
     ultimo_envio = 0
-    enviou_silencio = True
+    silencio = True
 
     with mido.open_input(porta_alvo) as porta_entrada:
         for mensagem in porta_entrada:
@@ -158,13 +158,13 @@ def iniciar():
                     
                     cliente_osc.send_message("/chatbox/input", [texto_chatbox, True, False])
                     print(texto_chatbox)
-                    enviou_silencio = False
+                    silencio = False
                 
                 else:
-                    if not enviou_silencio:
+                    if not silencio:
                         cliente_osc.send_message("/chatbox/input", ["", True, False])
                         print("🤫 Silêncio... (Controle devolvido ao MagicChatbox)")
-                        enviou_silencio = True
+                        silencio = True
 
                 ultimo_envio = tempo_atual
 
